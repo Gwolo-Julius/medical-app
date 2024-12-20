@@ -7,15 +7,74 @@ const Appointment = () => {
   const { docId } = useParams();
   const { doctors, currencySymbol } = useContext(AppContext);
   const [docInfo, setDocInfo] = useState(null);
+  const [docSlots, setDocSlots] = useState([]);
+  const [slotIndex, setSlotIndex] = useState(0);
+  const [slotTime, setSlotTime] = useState("");
 
+  // @@@@@@@@@@@@@@@@ Functions @@@@@@@@@@@@@@@@
   const fetchDocInfo = async () => {
     const docInfo = doctors.find((doc) => doc._id === docId);
     setDocInfo(docInfo);
   };
 
+  const getAvailableSlot = async () => {
+    setDocSlots([]);
+
+    // Getting today's date
+    let today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+      // Getting current date
+      let currentDate = new Date(today);
+      currentDate.setDate(today.getDate() + i);
+
+      // setting end time of the date with index
+      let endTime = new Date();
+      endTime.setDate(today.getDate() + i);
+      endTime.setHours(21, 0, 0, 0);
+
+      // setting hours
+      if (today.getDate() === currentDate.getDate()) {
+        currentDate.setHours(
+          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
+        );
+        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+      } else {
+        currentDate.setHours(10);
+        currentDate.setMinutes(0);
+      }
+
+      let timeSlots = [];
+
+      while (currentDate < endTime) {
+        let formattedTime = currentDate.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        // Add slot to time
+        timeSlots.push({
+          datetime: new Date(currentDate),
+          time: formattedTime,
+        });
+        // Increment current time by 30 minutes
+        currentDate.setMinutes(currentDate.getMinutes() + 30);
+      }
+      setDocSlots((prev) => [...prev, timeSlots]);
+    }
+  };
+  // @@@@@@@@@@@@@@@@ useEffects @@@@@@@@@@@@@@@
+
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
+
+  useEffect(() => {
+    getAvailableSlot();
+  }, [docInfo]);
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
 
   return (
     docInfo && (
@@ -53,9 +112,9 @@ const Appointment = () => {
                 {docInfo.about}
               </p>
             </div>
-            <p>
-              Appointment fee:{" "}
-              <span>
+            <p className="text-gray-500 mt-4 font-medium">
+              Appointment fee:
+              <span className="text-gray-700">
                 {currencySymbol}
                 {docInfo.fees}
               </span>
