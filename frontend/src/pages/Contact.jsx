@@ -25,9 +25,13 @@ const Contact = () => {
             Tel: (415)555-0132 <br />
             Email: gwolojulius2@gmail.com
           </p>
-          <p>Careers at Prescripto</p>
-          <p>Learn more about our team and job openings</p>
-          <button>Explore Jobs</button>
+          <p className="font-semibold text-lg text-gray-700">
+            Careers at Prescripto
+          </p>
+          <p className="text-gray-500">
+            Learn more about our team and job openings
+          </p>
+          <button className="border border-black py-2 px-5 hover:bg-black hover:text-white transition-all duration-300">Explore Jobs</button>
         </div>
       </div>
     </div>
