@@ -8,16 +8,18 @@ function Doctors() {
   const { doctors } = useContext(AppContext);
   const navigate = useNavigate();
 
+  const applyFilter = () => {
+    if (speciality) {
+      setFilterDoc(doctors.filter((doc) => doc.speciality === speciality && doc._id));
+    } else {
+      setFilterDoc(doctors);
+    }
+  };
+
   useEffect(() => {
-    const applyFilter = () => {
-      if (speciality) {
-        setFilterDoc(doctors.filter((doc) => doc.speciality === speciality));
-      } else {
-        setFilterDoc(doctors);
-      }
-    };
     applyFilter();
   }, [doctors, speciality]);
+
   return (
     <div>
       <p>Browse through the doctors specialist.</p>
@@ -90,7 +92,9 @@ function Doctors() {
                 : navigate("/doctors/Gastroenterologist")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 px-16 border border-gray-300 rounded hover:bg-blue-50 transition duration-300 ease-in-out cursor-pointer ${
-              speciality === "Gastroenterologist" ? "bg-blue-400 text-white" : ""
+              speciality === "Gastroenterologist"
+                ? "bg-blue-400 text-white"
+                : ""
             }`}
           >
             Gastroenterologist
