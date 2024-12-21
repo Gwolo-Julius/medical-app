@@ -84,7 +84,7 @@ const Appointment = () => {
     docInfo && (
       <div className="">
         {/* @@@@@@@@@@@@@@  Doctor's Information @@@@@@@@@@@@@ */}
-        <div className="flex md:flex-row sm:flex-col">
+        <div className="flex md:flex-row flex-col">
           <div className="">
             <img
               className="bg-primary w-full sm:max-w-72 rounded-lg"
@@ -94,9 +94,9 @@ const Appointment = () => {
           </div>
 
           {/* @@@@@@@@@@@@@@  Doctor's name,degree, @@@@@@@@@@@@@ */}
-          <div className="flex-1 border border-gray-400 rounded-lg p-6 py-5 bg-white ml-4 md:ml-4 md:mt-0 mt-[-80px] sm:mt-4 sm:mx-0">
+          <div className="flex-1 border border-gray-400 rounded-lg p-6 py-5 bg-white ml-4 md:ml-4 md:mt-0 mt-[60px] sm:mt-4 sm:mx-0">
             <p className="flex items-center gap-2 text-2xl font-medium text-gray-900">
-              {docInfo.name}{" "}
+              {docInfo.name}
               <img className="w-5" src={assets.verified_icon} alt="" />
             </p>
             <div className="flex items-center gap-2 text-sm mt-1 text-gray-600">
