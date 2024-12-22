@@ -29,17 +29,20 @@ const MyProfile = () => {
           }
         />
       ) : (
-        <p className="font-medium text-3xl text-neutral-800 ">{userData.name}</p>
+        <p className="font-medium text-3xl text-neutral-800 ">
+          {userData.name}
+        </p>
       )}
       <hr className="bg-zinc-400 border-none h-[1px]" />
       <div>
         <h2 className="text-neutral-500 underline mt-3">CONTACT INFORMATION</h2>
         <div className="grid grid-cols-[1fr,_3fr] gap-y-2.5 mt-3 text-neutral-700">
-          <p className="font-medium">Email: </p>
-          <p className="text-blue-500">{userData.email}</p>
-          <p className="font-medium">Phone: </p>
+          <p className="font-medium">Email: </p>
+          <p className="text-blue-500">{userData.email}</p>
+          <p className="font-medium">Phone: </p>
           {isEdit ? (
-            <input className="bg-gray-100 max-w-52"
+            <input
+              className="bg-gray-100 max-w-52"
               type="text"
               value={userData.phone}
               onChange={(e) =>
@@ -52,7 +55,8 @@ const MyProfile = () => {
           <p className="font-medium">Address: </p>
           {isEdit ? (
             <p className="text-gray-500">
-              <input className="bg-gray-50"
+              <input
+                className="bg-gray-50"
                 onChange={() =>
                   setUserData((prev) => ({
                     ...prev,
@@ -63,7 +67,8 @@ const MyProfile = () => {
                 type="text"
               />
               <br />
-              <input className="bg-gray-50"
+              <input
+                className="bg-gray-50"
                 onChange={() =>
                   setUserData((prev) => ({
                     ...prev,
@@ -85,33 +90,36 @@ const MyProfile = () => {
       </div>
       <div>
         <p className="mt-3 underline text-neutral-500">BASIC INFORMATION</p>
-        {isEdit ? (
-          <select
-            onChange={(e) =>
-              setUserData((prev) => ({ ...prev, gender: e.target.value }))
-            }
-            value={userData.gender}
-          >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        ) : (
-          <p>{userData.gender}</p>
-        )}
-        <p>Birthday: </p>
-        {isEdit ? (
-          <input
-            onChange={(e) =>
-              setUserData((prev) => ({ ...prev, dob: e.target.value }))
-            }
-            value={userData.dob}
-            type="date"
-          />
-        ) : (
-          <p>{userData.dob}</p>
-        )}
+        <div className="grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3">
+          <p>Gender:</p>
+          {isEdit ? (
+            <select
+              onChange={(e) =>
+                setUserData((prev) => ({ ...prev, gender: e.target.value }))
+              }
+              value={userData.gender}
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          ) : (
+            <p>{userData.gender}</p>
+          )}
+          <p>Birthday: </p>
+          {isEdit ? (
+            <input
+              onChange={(e) =>
+                setUserData((prev) => ({ ...prev, dob: e.target.value }))
+              }
+              value={userData.dob}
+              type="date"
+            />
+          ) : (
+            <p>{userData.dob}</p>
+          )}
+        </div>
       </div>
-      
+
       <div>
         {isEdit ? (
           <button onClick={() => setIsEdit(false)}>Save Information</button>
