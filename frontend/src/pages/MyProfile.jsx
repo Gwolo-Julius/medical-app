@@ -39,7 +39,7 @@ const MyProfile = () => {
           <p className="text-blue-500">{userData.email}</p>
           <p className="font-medium">Phone: </p>
           {isEdit ? (
-            <input
+            <input className="bg-gray-100 max-w-52"
               type="text"
               value={userData.phone}
               onChange={(e) =>
@@ -47,12 +47,12 @@ const MyProfile = () => {
               }
             />
           ) : (
-            <p>{userData.phone}</p>
+            <p className="text-blue-400">{userData.phone}</p>
           )}
-          <p>Address: </p>
+          <p className="font-medium">Address: </p>
           {isEdit ? (
-            <p>
-              <input
+            <p className="text-gray-500">
+              <input className="bg-gray-50"
                 onChange={() =>
                   setUserData((prev) => ({
                     ...prev,
@@ -63,7 +63,7 @@ const MyProfile = () => {
                 type="text"
               />
               <br />
-              <input
+              <input className="bg-gray-50"
                 onChange={() =>
                   setUserData((prev) => ({
                     ...prev,
@@ -75,7 +75,7 @@ const MyProfile = () => {
               />
             </p>
           ) : (
-            <p>
+            <p className="text-gray-500">
               {userData.address.line1}
               <br />
               {userData.address.line2}
@@ -84,7 +84,7 @@ const MyProfile = () => {
         </div>
       </div>
       <div>
-        <p>BASIC INFORMATION</p>
+        <p className="mt-3 underline text-neutral-500">BASIC INFORMATION</p>
         {isEdit ? (
           <select
             onChange={(e) =>
