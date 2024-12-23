@@ -57,7 +57,7 @@ const MyProfile = () => {
             <p className="text-gray-500">
               <input
                 className="bg-gray-50"
-                onChange={() =>
+                onChange={(e) =>
                   setUserData((prev) => ({
                     ...prev,
                     address: { ...prev.address, line1: e.target.value },
@@ -69,7 +69,7 @@ const MyProfile = () => {
               <br />
               <input
                 className="bg-gray-50 max-w-52"
-                onChange={() =>
+                onChange={(e) =>
                   setUserData((prev) => ({
                     ...prev,
                     address: { ...prev.address, line2: e.target.value },
@@ -133,7 +133,7 @@ const MyProfile = () => {
         ) : (
           <button
             className="border border-primary rounded-full px-8 py-2 hover:bg-primary transition-all hover:text-white"
-             onClick={() => setIsEdit(true)}
+            onClick={() => setIsEdit(true)}
           >
             Edit
           </button>
