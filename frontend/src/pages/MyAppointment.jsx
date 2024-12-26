@@ -26,7 +26,7 @@ const MyAppointment = () => {
               <p className="text-xs mt-1">
                 <span className="text-sm font-medium text-neutral-700 ">
                   Date & time:
-                </span>{" "}
+                </span>
                 25, December, 2024 | 10:30 PM
               </p>
             </div>

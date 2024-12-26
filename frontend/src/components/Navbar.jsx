@@ -78,7 +78,7 @@ const Navbar = () => {
         <div
           className={`${
             showMenu ? "fixed w-full" : "h-0 w-0"
-          } md:hidden right-0 bottom-0 top-0 left-0 z-20 overflow-hidden bg-orange-600 transition-all`}
+          } md:hidden right-0 bottom-0 top-0 left-0 z-20 overflow-hidden bg-white transition-all`}
         >
           <div className="flex items-center justify-between py-6 px-5">
             <img className="w-36" src={assets.logo} alt="" />
